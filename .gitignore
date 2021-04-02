@@ -1,0 +1,17 @@
+node_modules/
+node_modules
+
+/node_modules/
+/node_modules
+
+config/
+config
+
+/frontend/node_modules/
+/frontend/node_modules
+frontend/node_modules/
+frontend/node_modules
+
+
+
+
