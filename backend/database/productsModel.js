@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Reviews = require('./reviewsSchema');
+const reviewsSchema = require('./reviewsSchema');
 
 const productsSchema = new mongoose.Schema({
     user: {
@@ -33,7 +33,7 @@ const productsSchema = new mongoose.Schema({
         required: [true, 'Please, provide a description for the product.']
     },
 
-    reviews: [Reviews],
+    reviews: [reviewsSchema],
 
     averageRating: {
         type: Number,
