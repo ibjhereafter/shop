@@ -6,7 +6,7 @@ const ordersSchema = new mongoose.Schema({
         required: true,
         ref:'user'
     },
-    orderedItems: [{
+    orderItems: [{
         name: {
             type: String,
             required: true,
@@ -65,7 +65,7 @@ const ordersSchema = new mongoose.Schema({
         email_address: String
     },
 
-    tax: {
+    taxPrice: {
         type: Number,
         required: true,
         default: 0.0
@@ -90,14 +90,13 @@ const ordersSchema = new mongoose.Schema({
     },
 
     paidAt: Date,
+    deliveredAt: Date,
 
     isDelivered: {
         type: Boolean,
         required: true,
         default: false
-    },
-
-    deliveredAt: Date
+    }
 
 }, {
     timestamps: true

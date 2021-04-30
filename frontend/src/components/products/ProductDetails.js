@@ -1,0 +1,147 @@
+import React, {Fragment, useEffect, useState} from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
+import { startGetProductDetails } from '../../store/actions/index';
+
+import Styles from '../utilities/styles';
+import Error from "../utilities/Error";
+import Loader from "../utilities/Loader";
+import Rating from '../utilities/Rating';
+
+
+const ProductDetails = (props) => {
+    const { loading, error, product, startGetProductDetails, history }  = props;
+    const [ quantity, setQuantity ] = useState(1);
+
+    const addQuantity = () => {
+        setQuantity(quantity + 1)
+
+        if (quantity === product.stock) {
+            setQuantity(product.stock)
+
+        }
+    };
+
+    const subtractQuantity = (event) => {
+        setQuantity(quantity - 1);
+
+        if (quantity <= 0) {
+            setQuantity(0);
+        }
+    };
+
+    const goToCart = (product, quantity) => {
+        if (product) {
+            product.quantity = quantity;
+            history.push('/cart', product);
+        }
+    };
+
+    useEffect(() => {
+
+        startGetProductDetails(props.match.params.id);
+
+    }, [startGetProductDetails, props.match.params.id]);
+
+    const stock = (stock) => {
+        if (stock >= 1) {
+            return (
+                <div style={{color: 'green'}} className="inStock">In Stock ({stock})</div>
+            )
+        } else {
+            return (
+                <div style={{color: 'red'}} className="outOfStock">Out of Stock</div>
+            )
+        }
+    };
+
+    return (
+        <Fragment>
+            <div className="ui stackable grid container">
+                <Link to="/">
+                    <button style={Styles.marginTop} className="ui black button">Go Back</button>
+                </Link>
+            </div>
+
+            {
+                error && <Error />
+            }
+
+            {
+                loading ? <Loader /> : (
+                    <div className="ui stackable grid container">
+                        <div className="eight wide column row">
+                            <div className="column">
+                                <img src={`https://jalloh-proshop.s3.eu-central-1.amazonaws.com/${product.image}`}
+                                     alt={product.description}
+                                     width="500"
+                                     height="400"
+                                />
+
+                            </div>
+
+                        </div>
+                        <div className="four wide column row stackable">
+                            <div className="column">
+                                <div style={Styles.marginBottom} className="ui header">{product.name}</div>
+                                <hr/>
+
+                                <div style={Styles.marginBottom}>
+                                    <Rating averageRating={product.averageRating}/>{product.numberOfReviews} reviews
+                                </div>
+                                <hr/>
+
+                                <div style={Styles.marginBottom} className="ui header">$ {product.price}</div>
+                                <hr/>
+
+                                <div className="ui header">{product.description}</div>
+                            </div>
+
+                        </div>
+
+                        <div className="four wide column row">
+                            <div className="column">
+                                <table className="ui basic table">
+                                    <tbody className="ui header">
+                                    <tr>
+                                        <td>Price</td>
+                                        <td>$ {product.price}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Status</td>
+                                        <td>{stock(product.stock)}</td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                                <div style={Styles.marginBottom}>
+                                    <button onClick={addQuantity} className="ui green button">+</button>
+                                    <button className="ui basic button" style={Styles.marginRightLeft}>{quantity}</button>
+                                    <button onClick={subtractQuantity} className="ui grey button">-</button>
+                                </div>
+                                <button type="button"
+                                        onClick={() => goToCart(product, quantity)}
+                                        disabled={product.stock === 0}
+                                        className="fluid ui black button"
+                                >Add to Cart</button>
+
+                            </div>
+                        </div>
+
+                    </div>)
+            }
+
+        </Fragment>
+    )
+};
+
+const mapStateToProps = (state) => {
+    return {
+        loading: state.productDetails.loading,
+        error: state.productDetails.error,
+        product: state.productDetails.product
+    }
+}
+
+export default connect(mapStateToProps, { startGetProductDetails })(ProductDetails);
