@@ -73,7 +73,7 @@ const Profile = (props) => {
                                                     <tr>
                                                         <td data-label="Id">{order._id}</td>
                                                         <td data-label="Date">{order.createdAt.substr(0, 10)}</td>
-                                                        <td data-label="Total">{order.totalPrice.toFixed(2)}</td>
+                                                        <td data-label="Total">$ {order.totalPrice.toFixed(2)}</td>
                                                         <td data-label="Paid">{order.isPaid ? order.paymentResult.update_time.substr(0, 10) : (<div className="ui red visible message">Not paid</div>)}</td>
                                                         <td data-label="Delivered">{order.isDelivered ? <div className="ui visible green message">Delivered</div> : (<div className="ui red visible message">Not Delivered</div>)}</td>
                                                         <td>

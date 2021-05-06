@@ -11,7 +11,7 @@ import Rating from '../utilities/Rating';
 
 
 const ProductDetails = (props) => {
-    const { loading, error, product, startGetProductDetails, history }  = props;
+    const { loading, error, product, startGetProductDetails, history, reviews }  = props;
     const [ quantity, setQuantity ] = useState(1);
 
     const addQuantity = () => {
@@ -56,6 +56,29 @@ const ProductDetails = (props) => {
         }
     };
 
+    const reviewList = reviews.map((review) => {
+        return (
+            <Fragment key={review._id}>
+                <div className="item">
+                    <div className="content">
+                        <div className="header">
+                            <div>{review.name}</div>
+                        </div>
+                        <br/>
+                        <Rating averageRating={review.rating}/>
+                        <br/>
+                        <div>{review.comment}</div>
+                        <br/>
+                        <div>{review.createdAt.substring(0, 10)}</div>
+                    </div>
+                </div>
+
+
+
+            </Fragment>
+        )
+    });
+
     return (
         <Fragment>
             <div className="ui stackable grid container">
@@ -78,6 +101,18 @@ const ProductDetails = (props) => {
                                      width="500"
                                      height="400"
                                 />
+
+                                <div style={Styles.marginTop} className="ui container">
+                                    <h1>REVIEWS</h1>
+                                    {
+                                        reviews.length === 0 ? <div style={Styles.marginBottom} className="ui yellow visible message header">There are no reviews for this product right now.</div> : <div className="ui celled list">{reviewList}</div>
+                                    }
+                                </div>
+                                <div style={Styles.marginTop} className="ui container">
+                                    <Link to={`/products/${product._id}/review`}>
+                                        <button className="ui black button">WRITE A REVIEW</button>
+                                    </Link>
+                                </div>
 
                             </div>
 
@@ -140,7 +175,8 @@ const mapStateToProps = (state) => {
     return {
         loading: state.productDetails.loading,
         error: state.productDetails.error,
-        product: state.productDetails.product
+        product: state.productDetails.product,
+        reviews: state.reviews.reviews
     }
 }
 

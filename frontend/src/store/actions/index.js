@@ -1,5 +1,5 @@
 export { startGetAllProducts } from './productsActionCreator';
-export { startGetProductDetails } from './productDetailsActionCreator';
+export { startGetProductDetails, getProductDetails } from './productDetailsActionCreator';
 export { startGetCartProduct, startRemoveCartItem, getShippingAddress, getPaymentMethod } from './cartActionCreator';
 export { startLogIn, startLogOut, logOut } from './authActionCreator';
 export { startRegister, resetRegistrationMessage, startGetUserProfile, startUpdateProfile,
@@ -12,3 +12,4 @@ export {
     startAdminGetUserProfileToBeDeleted, startAdminGetUserProfileToBeEdited, startAdminEditUserProfile,
     startAdminGetAllProducts, startAdminGetProductToBeDeleted, startAdminDeleteProduct, startAdminCreateProduct,
     startAdminGetProductToBeEdited, startAdminEditProduct, startAdminGetAllOrders, startAdminMarkOrderAsDelivered } from './adminActionCreator';
+export { startCreateProductReview } from './productReviewActionCreator';

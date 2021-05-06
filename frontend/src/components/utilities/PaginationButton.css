@@ -1,0 +1,5 @@
+button:focus {
+    background-color: black !important;
+    text-decoration-color: black !important;
+    text-decoration: underline !important;
+}

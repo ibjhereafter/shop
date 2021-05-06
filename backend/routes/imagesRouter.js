@@ -12,7 +12,7 @@ const s3 = new AWS.S3( {
     region: 'eu-central-1'
 });
 
-imagesRouter.post('/images', authenticate, admin, async (req, res) => {
+imagesRouter.post('/images', authenticate, async (req, res) => {
     try {
         const { fileType, contentType } = req.body;
         const key = `${req.user._id}/${uuid()}.${fileType}`;

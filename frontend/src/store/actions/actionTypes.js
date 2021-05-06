@@ -40,19 +40,19 @@ export const REGISTER_USER_FAILURE = 'REGISTER_USER_FAILURE';
 export const RESET_REGISTERED_USER_MESSAGE = 'RESET_REGISTERED_USER_MESSAGE';
 export const RESET_CART_ITEMS_FOR_REGISTERED_USER = 'RESET_CART_ITEMS_FOR_REGISTERED_USER';
 
-//########################################################################
+//#########################################################################################################
 
 export const USER_PROFILE = 'USER_PROFILE';
 export const USER_PROFILE_FAILURE = 'USER_PROFILE_FAILURE';
 export const UPDATE_PROFILE_FAILURE = 'UPDATE_PROFILE_FAILURE';
-//########################################################################
+//#########################################################################################################
 
 export const ADMIN_GET_SINGLE_USER_PROFILE ='ADMIN_GET_SINGLE_USER_PROFILE';
 export const ADMIN_GET_SINGLE_USER_PROFILE_FAILURE = 'ADMIN_GET_SINGLE_USER_PROFILE_FAILURE';
 export const ADMIN_USER_TO_BE_EDITED = 'ADMIN_USER_TO_BE_EDITED';
 export const ADMIN_USER_TO_BE_EDITED_FAILURE = 'ADMIN_USER_TO_BE_EDITED_FAILURE';
 export const ADMIN_USER_EDIT_FAILURE = 'ADMIN_USER_EDIT_FAILURE';
-//########################################################################
+//#########################################################################################################
 export const ADMIN_GET_ALL_PRODUCTS = 'ADMIN_GET_ALL_PRODUCTS';
 export const ADMIN_GET_PRODUCT_TO_BE_DELETED = 'ADMIN_GET_PRODUCT_TO_BE_DELETED';
 export const ADMIN_GET_PRODUCT_TO_BE_DELETED_FAILURE = 'ADMIN_GET_PRODUCT_TO_BE_DELETED_FAILURE';
@@ -60,18 +60,26 @@ export const ADMIN_GET_ALL_PRODUCTS_FAILURE = 'ADMIN_GET_ALL_PRODUCTS_FAILURE';
 export const ADMIN_EDIT_PRODUCT = 'ADMIN_EDIT_PRODUCT';
 export const ADMIN_EDIT_PRODUCT_FAILURE = 'ADMIN_EDIT_PRODUCT_FAILURE';
 
-//########################################################################
+//#########################################################################################################
 export const ADMIN_GET_USERS = 'ADMIN_GET_USERS';
 export const ADMIN_GET_USERS_FAILURE = 'ADMIN_GET_USERS_FAILURE';
 export const ADMIN_DELETE_USER = 'ADMIN_DELETE_USER';
 export const ADMIN_DELETE_USER_FAILURE = 'ADMIN_DELETE_USER_FAILURE';
 export const ADMIN_DELETE_USER_RESET_MESSAGE = 'ADMIN_DELETE_USER_RESET_MESSAGE';
-//########################################################################
+//#########################################################################################################
 
 export const ADMIN_GET_ORDERS = 'ADMIN_GET_ORDERS';
 export const ADMIN_GET_ORDERS_FAILURE = 'ADMIN_GET_ORDERS';
-
+//#########################################################################################################
 export const MARK_DELIVERED = 'MARK_DELIVERED';
+//#########################################################################################################
+export const GET_PRODUCT_REVIEWS = 'GET_PRODUCT_REVIEWS';
+export const GET_PRODUCT_REVIEWS_FAILURE = 'GET_PRODUCT_REVIEWS_FAILURE';
+export const CREATE_PRODUCT_REVIEW = 'CREATE_PRODUCT_REVIEW';
+export const CREATE_PRODUCT_REVIEW_FAILURE = 'CREATE_PRODUCT_REVIEW_FAILURE';
+export const RESET_CREATE_PRODUCT_REVIEW_MESSAGE = 'GET_PRODUCT_REVIEWS';
+
+
 
 
 

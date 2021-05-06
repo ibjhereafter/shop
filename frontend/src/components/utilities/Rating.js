@@ -4,11 +4,11 @@ import React, { Fragment } from "react";
 const Rating = ({ averageRating }) => {
     const rating = () => {
 
-        if (averageRating === 0.5) {
+        if (averageRating === 0.5 || (averageRating > 0.5 && averageRating < 1)) {
             return <i className="half star icon yellow"/>
         }
 
-        if (averageRating === 1) {
+        if (averageRating === 1 || (averageRating > 1 && averageRating < 1.5)) {
             return (
                 <Fragment>
                     <i className="star icon yellow"/>
@@ -20,7 +20,7 @@ const Rating = ({ averageRating }) => {
             )
         }
 
-        if (averageRating === 1.5) {
+        if (averageRating === 1.5 || (averageRating > 1.5 && averageRating < 2)) {
             return (
                 <Fragment>
                     <i className="star icon yellow"/>
@@ -32,7 +32,7 @@ const Rating = ({ averageRating }) => {
             )
         }
 
-        if (averageRating === 2) {
+        if (averageRating === 2 || (averageRating > 2 && averageRating < 2.5)) {
             return (
                 <Fragment>
                     <i className="star icon yellow" />
@@ -44,7 +44,7 @@ const Rating = ({ averageRating }) => {
             )
         }
 
-        if (averageRating === 2.5) {
+        if (averageRating === 2.5 || (averageRating > 2.5 && averageRating < 3)) {
             return (
                 <Fragment>
                     <i className="star icon yellow" />
@@ -57,7 +57,7 @@ const Rating = ({ averageRating }) => {
             )
         }
 
-        if (averageRating === 3) {
+        if (averageRating === 3 || (averageRating > 3 && averageRating < 3.5)) {
             return (
                 <Fragment>
                     <i className="star icon yellow" />
@@ -69,7 +69,7 @@ const Rating = ({ averageRating }) => {
             )
         }
 
-        if (averageRating === 3.5 ) {
+        if (averageRating === 3.5 || (averageRating > 3.5 && averageRating < 4)) {
             return (
                 <Fragment>
                     <i className="star icon yellow" />
@@ -81,7 +81,7 @@ const Rating = ({ averageRating }) => {
             )
         }
 
-        if (averageRating === 4) {
+        if (averageRating === 4 || (averageRating > 4 && averageRating < 4.5)) {
             return (
                 <Fragment>
                     <i className="star icon yellow" />
@@ -93,7 +93,7 @@ const Rating = ({ averageRating }) => {
             )
         }
 
-        if (averageRating === 4.5) {
+        if (averageRating === 4.5 || (averageRating > 4.5 && averageRating < 5)) {
             return (
                 <Fragment>
                     <i className="star icon yellow" />

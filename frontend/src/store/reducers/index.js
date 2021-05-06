@@ -10,6 +10,7 @@ import orderReducer from "./orderReducer";
 import orderDetailsReducer from "./orderDetailsReducer";
 import orderPaymentReducer from "./orderPaymentReducer";
 import adminReducer from "./adminReducer";
+import productReviews from "./productReviewReducer";
 
 
 
@@ -23,7 +24,8 @@ const rootReducer = combineReducers({
     userProfile: userReducer,
     orderDetails: orderDetailsReducer,
     paidOrder: orderPaymentReducer,
-    admin: adminReducer
+    admin: adminReducer,
+    reviews: productReviews
 });
 
 export default rootReducer;

@@ -25,6 +25,8 @@ import DeleteProduct from "./components/admin/DeleteProduct";
 import EditProduct from "./components/admin/EditProduct";
 import Orders from "./components/admin/Orders";
 import OrderDeliver from "./components/admin/OrderDeliver";
+import AddReview from "./components/products/AddReviews";
+
 
 
 const App = () => {
@@ -53,6 +55,7 @@ const App = () => {
                   <Route path="/admin/products" component={Products} exact />
                   <Route path="/admin/orders" component={Orders} exact />
                   <Route path="/admin/orders/:id/deliver" component={OrderDeliver} exact />
+                  <Route path="/products/:id/review" component={AddReview} exact />
               </Switch>
           </main>
           <Footer />

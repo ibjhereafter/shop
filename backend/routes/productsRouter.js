@@ -1,26 +1,57 @@
 const express = require('express');
 const productsRouter = express.Router();
-const multer = require('multer');
-const sharp = require('sharp');
 
 const Product = require('../database/productsModel');
 const authenticate = require('../middleware/authenticate');
 const admin = require('../middleware/admin');
-const cloudinary = require('../utilities/cloudinary');
 
-const upload =  multer({
-  limits: {
-    fileSize: 1000000
-  },
+productsRouter.post('/products/:id/review', authenticate, async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
 
-  fileFilter(req, file, cb) {
+    const reviews = [...product.reviews];
+    const existingUserReview = reviews.filter((review) => {
+      return req.user._id.toString() === review.user.toString();
+    });
 
-    if(!file.originalname.match(/\.(jpg|jpeg|png|JPG|JPEG|PNG)$/)) {
+    if (existingUserReview.length > 0) {
+      const error = new Error('You have already reviewed this product.');
+      return res.status(400).json({ error: error.message });
+    } else {
+      const { rating, comment } = req.body;
 
-      return cb(new Error('Please, upload only jpg, jpeg, or png file'));
+      const newReview = {
+        user: req.user._id,
+        name: req.user.name,
+        rating: Number(rating),
+        comment
+      };
+
+      product.reviews = product.reviews.concat(newReview);
+      await product.save();
+
+      const existingProduct = await Product.findById(req.params.id);
+      existingProduct.numberOfReviews = existingProduct.reviews.length;
+
+      let sum = 0;
+
+      existingProduct.reviews.forEach((review) => {
+        sum = (sum + Number(review.rating));
+      });
+
+      if (sum === 0) {
+        existingProduct.averageRating = rating;
+        await existingProduct.save();
+      } else {
+        const averageRating = (sum / Number(existingProduct.reviews.length));
+        existingProduct.averageRating = averageRating;
+        await existingProduct.save();
+      }
+      return res.status(201).json({ message: 'Your review has been successfully added. Thank you.'});
     }
 
-    cb(undefined, true);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
   }
 });
 
@@ -58,7 +89,14 @@ productsRouter.post('/admin/products/create', authenticate, admin, async (req, r
 
 productsRouter.get('/products/all', async (req, res) => {
   try {
-    const allProducts = await Product.find({});
+    const keyword = req.query.keyword ? {
+      name: {
+        $regex: req.query.keyword,
+        $options: 'i'
+      }
+    }: {};
+
+    const allProducts = await Product.find({ ...keyword });
     const totalProducts = await Product.countDocuments();
     return res.status(200).json({ totalProducts, products: allProducts });
   } catch (error) {

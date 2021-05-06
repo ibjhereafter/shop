@@ -1,12 +1,13 @@
 import axios from "axios";
 import * as actionTypes from './actionTypes';
+import { getProductReviews } from './productReviewActionCreator';
 
 const axiosOption = {
     mode: 'cors',
     withCredentials: true
 };
 
-const getProductDetails = (action) => {
+export const getProductDetails = (action) => {
     return {
         type: actionTypes.GET_PRODUCT_DETAILS,
         payload: action
@@ -26,6 +27,7 @@ export const startGetProductDetails = (productId) => {
             const url = `/products/${productId}`;
             const { data } = await axios.get(url, axiosOption);
             dispatch(getProductDetails(data));
+            dispatch(getProductReviews(data.reviews))
 
         } catch (error) {
             if (error.response) {

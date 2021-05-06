@@ -27,10 +27,10 @@ const getAllProductsAllFailure = (action) => {
     }
 };
 
-export const startGetAllProducts = () => {
+export const startGetAllProducts = (keyword = '') => {
     return async (dispatch) => {
         try {
-            const url = `/products/all`;
+            const url = `/products/all?keyword=${keyword}`;
             const { data } = await axios.get(url, axiosOption);
             dispatch(getAllProducts(data.products));
             dispatch(getTotalProducts(data.totalProducts));
