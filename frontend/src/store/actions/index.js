@@ -1,4 +1,4 @@
-export { startGetAllProducts } from './productsActionCreator';
+export { startGetAllProducts, startGetHighestRatedProducts } from './productsActionCreator';
 export { startGetProductDetails, getProductDetails } from './productDetailsActionCreator';
 export { startGetCartProduct, startRemoveCartItem, getShippingAddress, getPaymentMethod } from './cartActionCreator';
 export { startLogIn, startLogOut, logOut } from './authActionCreator';

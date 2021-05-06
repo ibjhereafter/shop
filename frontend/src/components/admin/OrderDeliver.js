@@ -7,6 +7,7 @@ import styles from "../utilities/styles";
 import { Link } from "react-router-dom";
 
 const OrderDeliver = (props) => {
+    document.title = 'Admin Mark As Deliver Order | Shop';
     const { startAdminMarkOrderAsDelivered, paidOrder } = props;
     const { data } = props.location;
 

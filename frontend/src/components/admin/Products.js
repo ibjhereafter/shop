@@ -8,6 +8,7 @@ import Error from "../utilities/Error";
 import { startAdminGetAllProducts } from '../../store/actions/index';
 
 const Products = (props) => {
+    document.title = 'Admin | Product | Shop';
     const { products, loading, error, startAdminGetAllProducts } = props;
     useEffect(() => {
         startAdminGetAllProducts();

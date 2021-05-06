@@ -11,6 +11,7 @@ import { startGetCartProduct, startRemoveCartItem } from '../../store/actions/in
 const Cart = (props) => {
     const { startGetCartProduct, startRemoveCartItem, cartItems   } = props;
     const { state } = props.location;
+    document.title = 'Cart | Shop';
 
     useEffect(() => {
         if (state) {

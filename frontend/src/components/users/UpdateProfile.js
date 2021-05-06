@@ -6,6 +6,7 @@ import Styles from "../utilities/styles";
 import { startUpdateProfile } from '../../store/actions/index';
 
 const UpdateProfile = (props) => {
+    document.title = 'Update Procfile | Shop';
     const { userProfile, loggedInUser, startUpdateProfile } = props;
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');

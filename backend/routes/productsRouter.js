@@ -87,6 +87,36 @@ productsRouter.post('/admin/products/create', authenticate, admin, async (req, r
   }
 });
 
+productsRouter.get('/products/rated', async (req, res) => {
+  try {
+    const products = await Product.$where('this.averageRating === 5').limit(8).exec();
+
+    const highestRated = products.filter((product) => {
+      return product.averageRating === 5;
+    });
+
+    const ratedProduct = highestRated.map((product) => {
+      product.numberOfReviews = undefined;
+      product.stock = undefined;
+      product.reviews = undefined;
+      product.brand = undefined;
+      product.description = undefined;
+      product.user = undefined;
+      product.createdAt = undefined;
+      product.updatedAt = undefined;
+      product.__v = undefined;
+      product.category = undefined;
+      return product;
+    });
+
+    return res.status(200).json(ratedProduct);
+
+  } catch (error) {
+
+    return res.status(500).json({ error: error.message });
+  }
+});
+
 productsRouter.get('/products/all', async (req, res) => {
   try {
     const keyword = req.query.keyword ? {

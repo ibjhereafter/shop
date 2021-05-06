@@ -8,6 +8,7 @@ import CheckoutProcess from "./CheckoutProcess";
 
 
 const Shipping = (props) => {
+    document.title = 'Shipping | Shop';
     const { getShippingAddress, loggedInUser, shippingAddress } = props;
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');

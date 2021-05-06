@@ -8,6 +8,7 @@ import ProductEditLoader from "../utilities/ProductEditLoader";
 import history from "../../history";
 
 const EditProduct = (props) => {
+    document.title = 'Admin Edit Product | Shop';
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
     const [brand, setBrand] = useState('');

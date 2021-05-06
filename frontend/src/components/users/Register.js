@@ -7,6 +7,7 @@ import pattern from "../utilities/RegexPattern";
 import { startRegister, resetRegistrationMessage } from '../../store/actions/index';
 
 const Register = (props) => {
+    document.title = 'New User Registration | Shop';
     const [name, setName] = useState('');
     const [nameError, setNameError] = useState('');
     const [showNameErrorMessage, setShowNameErrorMessage] = useState('hidden');

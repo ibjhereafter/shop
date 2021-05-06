@@ -5,12 +5,18 @@ const INITIAL_DATA = {
     error: false,
     message: null,
     totalProducts: 0,
+    keyword: '',
     products: []
 
 };
 
 const productsReducer = (state = INITIAL_DATA, action) => {
     switch (action.type) {
+        case 'SEND_KEY_WORD':
+            return {
+                ...state,
+                keyword: action.payload
+            }
         case actionTypes.GET_ALL_PRODUCTS: {
             return {
                 loading: false,

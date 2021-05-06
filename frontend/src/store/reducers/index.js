@@ -11,6 +11,7 @@ import orderDetailsReducer from "./orderDetailsReducer";
 import orderPaymentReducer from "./orderPaymentReducer";
 import adminReducer from "./adminReducer";
 import productReviews from "./productReviewReducer";
+import highestRatedProductReducer from "./highestRatedProductReducer";
 
 
 
@@ -25,7 +26,8 @@ const rootReducer = combineReducers({
     orderDetails: orderDetailsReducer,
     paidOrder: orderPaymentReducer,
     admin: adminReducer,
-    reviews: productReviews
+    reviews: productReviews,
+    highestRatedProduct: highestRatedProductReducer
 });
 
 export default rootReducer;

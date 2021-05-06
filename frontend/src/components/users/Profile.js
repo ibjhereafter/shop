@@ -8,6 +8,7 @@ import Error from "../utilities/Error";
 import { Link } from "react-router-dom";
 
 const Profile = (props) => {
+    document.title = 'Procfile & Orders | Shop';
     const { startGetUserProfile, userProfile, user, startGetUserMyOrders, userOrders, loading, error } = props;
 
     useEffect(() => {

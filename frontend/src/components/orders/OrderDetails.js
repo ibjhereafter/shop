@@ -19,6 +19,7 @@ const axiosOption = {
 
 
 const OrderDetails = (props) => {
+    document.title = 'Order Details | Shop';
     const {
         loading, error, orderDetails, startGetOrderDetails, resetOrderPayment,
         startGetOrderPayment, paymentLoading, loggedInUser } = props;

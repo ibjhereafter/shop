@@ -9,6 +9,7 @@ import {Link} from "react-router-dom";
 
 
 const LogIn = (props) => {
+    document.title = 'Login | Shop';
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [formError, setFormError] = useState('');

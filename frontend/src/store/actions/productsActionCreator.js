@@ -45,3 +45,35 @@ export const startGetAllProducts = (keyword = '') => {
         }
     }
 };
+
+const getHighestRatedProductsFailure = (action) => {
+    return {
+        type: actionTypes.GET_HIGHEST_RATED_PRODUCT_FAILURE,
+        payload: action
+    }
+};
+
+const getHighestRatedProducts = (action) => {
+    return {
+        type: actionTypes.GET_HIGHEST_RATED_PRODUCT,
+        payload: action
+    }
+}
+
+export const startGetHighestRatedProducts = () => {
+    return async (dispatch) => {
+        try {
+            const url = '/products/rated';
+            const { data } = await axios.get(url, axiosOption);
+            dispatch(getHighestRatedProducts(data));
+
+        } catch (error) {
+            if (error.response) {
+                dispatch(getHighestRatedProductsFailure(error.response.data.error))
+
+            } else {
+                dispatch(getAllProductsAllFailure(error));
+            }
+        }
+    }
+};

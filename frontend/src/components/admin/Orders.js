@@ -8,6 +8,7 @@ import { startAdminGetAllOrders } from "../../store/actions";
 import { Link } from "react-router-dom";
 
 const Orders = (props) => {
+    document.title = 'Admin | Orders | Shop';
     const { startAdminGetAllOrders, orders, loading, error } = props;
     useEffect(() => {
         startAdminGetAllOrders();

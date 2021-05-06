@@ -13,6 +13,7 @@ import Rating from '../utilities/Rating';
 const ProductDetails = (props) => {
     const { loading, error, product, startGetProductDetails, history, reviews }  = props;
     const [ quantity, setQuantity ] = useState(1);
+    document.title = `${product.name} | Shop`;
 
     const addQuantity = () => {
         setQuantity(quantity + 1)
@@ -72,9 +73,6 @@ const ProductDetails = (props) => {
                         <div>{review.createdAt.substring(0, 10)}</div>
                     </div>
                 </div>
-
-
-
             </Fragment>
         )
     });

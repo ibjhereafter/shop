@@ -79,6 +79,12 @@ export const CREATE_PRODUCT_REVIEW = 'CREATE_PRODUCT_REVIEW';
 export const CREATE_PRODUCT_REVIEW_FAILURE = 'CREATE_PRODUCT_REVIEW_FAILURE';
 export const RESET_CREATE_PRODUCT_REVIEW_MESSAGE = 'GET_PRODUCT_REVIEWS';
 
+//#########################################################################################################
+
+export const GET_HIGHEST_RATED_PRODUCT = 'GET_HIGHEST_RATED_PRODUCT';
+export const GET_HIGHEST_RATED_PRODUCT_FAILURE = 'GET_HIGHEST_RATED_PRODUCT_FAILURE';
+
+
 
 
 

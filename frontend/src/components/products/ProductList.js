@@ -8,7 +8,7 @@ import Error from "../utilities/Error";
 import styles from "../utilities/styles";
 import Rating from "../utilities/Rating";
 import { startGetAllProducts } from '../../store/actions/index';
-
+import HighestRatedProducts from "./HighestRatedProducts";
 import PaginationButton from "../utilities/PaginationButton";
 
 const ProductList = (props) => {
@@ -58,8 +58,19 @@ const ProductList = (props) => {
 
     return (
         <Fragment>
+
             <div className="ui grid container">
                 <div className="ui sixteen column">
+
+                    {
+                        list.length < 12 ? null : (
+                            <Fragment>
+                                <h1 className="header">HIGHEST RATED PRODUCTS</h1>
+                                <HighestRatedProducts />
+                            </Fragment>)
+
+                    }
+
                     {
                         error ? <Error /> : <h1 className="ui header container">Latest Products</h1>
                     }

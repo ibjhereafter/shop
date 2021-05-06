@@ -7,6 +7,7 @@ import styles from "../utilities/styles";
 import history from "../../history";
 
 const DeleteUser = (props) => {
+    document.title = 'Admin Delete User | Shop';
     const { startAdminDeleteUser, startAdminGetUserProfileToBeDeleted, singleUser } = props;
 
     useEffect(() => {

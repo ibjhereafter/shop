@@ -108,10 +108,12 @@ const Header = (props) => {
     );
 };
 
+
 const mapStateToProps = (state) => {
     return {
         user: state.authentication.user
     }
 }
+
 
 export default connect(mapStateToProps, { startLogOut })(Header);

@@ -6,6 +6,7 @@ import { startAdminCreateProduct } from '../../store/actions/index';
 import ProductCreationLoader from "../utilities/ProductCreationLoader";
 
 const CreateProduct = (props) => {
+    document.title = 'Admin Create Product | Shop';
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
     const [brand, setBrand] = useState('');

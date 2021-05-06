@@ -4,6 +4,7 @@ import Styles from "../utilities/styles";
 import { startAdminGetUserProfileToBeEdited, startAdminEditUserProfile } from '../../store/actions/index';
 
 const EditUser = (props) => {
+    document.title = 'Admin Edit User | Shop';
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [admin, setAdmin] = useState('');

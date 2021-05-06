@@ -43,4 +43,11 @@ const SearchBar = (props) => {
     )
 };
 
-export default connect(null, { startGetAllProducts })(SearchBar);
+const sendKeyWord = (action) => {
+    return {
+        type: 'SEND_KEY_WORD',
+        payload: action
+    }
+}
+
+export default connect(null, { startGetAllProducts, sendKeyWord })(SearchBar);

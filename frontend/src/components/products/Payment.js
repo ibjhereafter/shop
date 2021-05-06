@@ -8,6 +8,7 @@ import Styles from '../utilities/styles';
 import { getPaymentMethod } from '../../store/actions/index';
 
 const Payment = (props) => {
+    document.title = 'Payment Method | Shop';
     const { loggedInUser, getPaymentMethod, shippingAddress } = props;
     const [paymentMethod, setPaymentMethod] = useState('PayPal');
 

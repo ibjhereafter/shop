@@ -9,6 +9,7 @@ import styles from '../utilities/styles';
 import { startGetCreateOrOrder } from '../../store/actions/index';
 
 const PlaceOrder = (props) => {
+    document.title = 'Order Summary | Shop';
     const { cart, startGetCreateOrOrder } = props;
     let itemsSum = 0;
     cart.cartItems.forEach((item) => {
