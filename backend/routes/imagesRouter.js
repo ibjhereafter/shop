@@ -8,8 +8,8 @@ const imagesRouter = express.Router();
 const s3 = new AWS.S3( {
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRECT_ACCESS_KEY_ID,
-    signatureVersion: 'v4',
-    region: 'eu-central-1'
+    signatureVersion: process.env.SIGNATURE_VERSION,
+    region: process.env.REGION,
 });
 
 imagesRouter.post('/images', authenticate, async (req, res) => {
