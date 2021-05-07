@@ -8,8 +8,8 @@ const imagesRouter = express.Router();
 const s3 = new AWS.S3( {
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRECT_ACCESS_KEY_ID,
-    signatureVersion: process.env.SIGNATURE_VERSION,
-    region: process.env.REGION,
+    signatureVersion: "v4",
+    region: "eu-central-1",
 });
 
 imagesRouter.post('/images', authenticate, async (req, res) => {
@@ -18,7 +18,7 @@ imagesRouter.post('/images', authenticate, async (req, res) => {
         const key = `${req.user._id}/${uuid()}.${fileType}`;
 
         const params = {
-            Bucket: 'jalloh-proshop',
+            Bucket: "jalloh-proshop",
             ContentType: contentType,
             Key: key
         }
