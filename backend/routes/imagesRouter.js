@@ -18,7 +18,7 @@ imagesRouter.post('/images', authenticate, async (req, res) => {
         const key = `${req.user._id}/${uuid()}.${fileType}`;
 
         const params = {
-            Bucket: process.env.BUCKET,
+            Bucket: process.env.BUCKET_NAME,
             ContentType: contentType,
             Key: key
         }
