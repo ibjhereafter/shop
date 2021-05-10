@@ -12,6 +12,7 @@ AWS.config.update({
     secretAccessKey: process.env.AWS_SECRECT_ACCESS_KEY_ID,
     signatureVersion: process.env.SIGNATURE_VERSION,
     region: process.env.REGION,
+
 });
 
 const s3 = new AWS.S3();
@@ -22,6 +23,7 @@ const uploadFile = (buffer, key, contentType) => {
         ContentType: contentType,
         Bucket: 'jalloh-proshop',
         Key: key,
+        AWS_SDK_LOAD_CONFIG: 1
     };
     return s3.upload(params).promise();
 };
