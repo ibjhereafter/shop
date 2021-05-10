@@ -1,6 +1,7 @@
 import axios from "axios";
 import * as actionTypes from './actionTypes';
 import { getProductReviews } from './productReviewActionCreator';
+import history from "../../history";
 
 const axiosOption = {
     mode: 'cors',
