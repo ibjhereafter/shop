@@ -12,6 +12,7 @@ AWS.config.update({
     secretAccessKey: process.env.AWS_SECRECT_ACCESS_KEY_ID,
     signatureVersion: process.env.SIGNATURE_VERSION,
     region: process.env.REGION,
+    endpoint: 'https://ibj.herokuapp.com/'
 
 });
 
