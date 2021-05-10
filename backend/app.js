@@ -38,16 +38,18 @@ app.use(imagesRouter);
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../frontend/build')));
 
-    app.get('/*', (req, res) => {
-        const index = path.join(__dirname, 'build', 'index.html');
-        res.sendFile(index);
-    });
-
     app.get('*', (req, res) => {
         const index = path.join(__dirname, 'build', 'index.html');
         res.sendFile(index);
     });
 }
+
+app.use(express.static(path.join(__dirname, '../frontend/build')));
+
+app.get('/*', (req, res) => {
+    const index = path.join(__dirname, 'build', 'index.html');
+    res.sendFile(index);
+});
 
 const PORT = process.env.PORT || 5000;
 
