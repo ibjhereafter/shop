@@ -1,9 +1,13 @@
 const express = require('express');
 const productsRouter = express.Router();
 
+const fileType = require('file-type');
+const multiparty = require('multiparty');
+const fs = require('fs');
 const Product = require('../database/productsModel');
 const authenticate = require('../middleware/authenticate');
 const admin = require('../middleware/admin');
+const uploadFile = require('../utilities/s3Upload');
 
 productsRouter.post('/products/:id/review', authenticate, async (req, res) => {
   try {
@@ -85,6 +89,7 @@ productsRouter.post('/admin/products/create', authenticate, admin, async (req, r
   } catch (error) {
     return res.status(400).json({ error: error.message });
   }
+
 });
 
 productsRouter.get('/products/rated', async (req, res) => {

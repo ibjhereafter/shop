@@ -86,7 +86,7 @@ const Cart = (props) => {
                     <div className="ui stackable grid container">
                         <div className="four wide column">
                             <div className="column">
-                                <img src={`https://jalloh-proshop.s3.eu-central-1.amazonaws.com/${item.image}`}
+                                <img src={`${item.image}`}
                                      alt={item.description}
                                      width="150"
                                      height="100"

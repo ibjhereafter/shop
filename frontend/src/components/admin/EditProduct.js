@@ -44,6 +44,8 @@ const EditProduct = (props) => {
 
     const onFormSubmit = (event) => {
         event.preventDefault();
+        const data = new FormData();
+        data.append('file', picture);
         const edit = {
             name,
             price,
@@ -54,15 +56,7 @@ const EditProduct = (props) => {
         };
         setProductEditLoader(true);
 
-        const contentType = picture.type;
-        const fileType = picture.type.substr(6);
-
-        const config = {
-            contentType,
-            fileType
-        };
-
-        startAdminEditProduct(props.match.params.id, picture, config, edit);
+        startAdminEditProduct(props.match.params.id, data, edit);
     };
 
     const previewFile = (file) => {

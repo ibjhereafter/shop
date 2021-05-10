@@ -1,31 +1,35 @@
 const express = require('express');
+const fileType = require('file-type');
+const multiparty = require('multiparty');
+const fs = require('fs');
 const AWS = require('aws-sdk');
-const { uuid } = require('uuidv4');
+
 const authenticate = require('../middleware/authenticate');
 const admin = require('../middleware/admin');
+const uploadFile = require('../utilities/s3Upload');
 const imagesRouter = express.Router();
-
-const s3 = new AWS.S3( {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRECT_ACCESS_KEY_ID,
-    signatureVersion: process.env.SIGNATURE_VERSION,
-    region: process.env.REGION
-});
 
 imagesRouter.post('/images', authenticate, async (req, res) => {
     try {
-        const { fileType, contentType } = req.body;
-        const key = `${req.user._id}/${uuid()}.${fileType}`;
-
-        const params = {
-            Bucket: process.env.BUCKET_NAME,
-            ContentType: contentType,
-            Key: key
-        }
-
-        const url = await s3.getSignedUrl('putObject', params );
-
-        return res.status(200).json({ url, key });
+        const form = new multiparty.Form();
+        form.parse(req, async (error, fields, files) => {
+            if (error) {
+                return res.status(500).send(error);
+            };
+            try {
+                const path = files.file[0].path;
+                const buffer = fs.readFileSync(path);
+                const type = await fileType.fromBuffer(buffer);
+                const imageType = type.mime.substr(6);
+                console.log(imageType)
+                const key = `${req.user._id}/${Date.now()}.${imageType}`;
+                const data = await uploadFile(buffer, key, type.mime);
+                console.log(data)
+                return res.status(200).send(data.Location);
+            } catch (err) {
+                return res.status(500).send({error: err.message});
+            }
+        });
 
     } catch (error) {
         return res.status(500).json({ error: error.message });

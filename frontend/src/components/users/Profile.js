@@ -39,7 +39,7 @@ const Profile = (props) => {
                         <div className="column">
                             <h1 className="ui header">{userProfile.name}</h1>
 
-                            <img src={`https://jalloh-proshop.s3.eu-central-1.amazonaws.com/${userProfile.image}`}
+                            <img src={`${userProfile.image}`}
                                  alt={userProfile.name}
                                  width="180px"
                             />

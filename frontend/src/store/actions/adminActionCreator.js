@@ -19,33 +19,28 @@ export const startGetProductToBeEdited = (productId) => {
     }
 };
 
-export const startAdminCreateProduct = (newProduct, image, config) => {
+export const startAdminCreateProduct = (product, file) => {
     return async () => {
         try {
-            const imageUrl = '/images';
-            const { data } = await axios.post(imageUrl, config, axiosOption);
-            const { url, key } = data;
-
-            await axios.put(url, image, {
+            const uploadUrl = '/images';
+            const { data: image } = await axios.post(uploadUrl, file, {
                 headers: {
-                    'Content-Type': image.type
+                    'Accept': 'multipart/form-data',
+                    'Content-Type': 'multipart/form-data',
                 }
             });
 
-            const createProductUrl = '/admin/products/create';
-
-            const candidateProduct = {
-                ...newProduct,
-                image: key
-            };
-
-            await axios.post(createProductUrl, candidateProduct, axiosOption);
+            const url = '/admin/products/create';
+            const newProduct = {
+                ...product,
+                image
+            }
+            await axios.post(url, newProduct);
             history.push('/admin/products');
-
 
         } catch (error) {
             if (error.response) {
-                console.log(error.response)
+                console.log(error.response);
             }
 
         }
@@ -284,22 +279,22 @@ export const startAdminGetProductToBeEdited = (productId) => {
     }
 };
 
-export const startAdminEditProduct = (productId, image, config, edit) => {
-    return async (dispatchEvent) => {
+export const startAdminEditProduct = (productId, file, edit) => {
+    return async () => {
         try {
             const imageUrl = '/images';
-            const { data } = await axios.post(imageUrl, config, axiosOption);
-            const { url: preSignedUrl, key } = data;
-
-            await axios.put(preSignedUrl, image, {
+            const { data: image } = await axios.post(imageUrl, file, {
                 headers: {
-                    'Content-Type': image.type
+                    'Accept': 'multipart/form-data',
+                    'Content-Type': 'multipart/form-data',
                 }
             });
 
+            console.log(image)
+
             const edition = {
                 ...edit,
-                image: key
+                image
             }
 
             const url = `/admin/products/${productId}/edit`;

@@ -43,22 +43,20 @@ const getUserProfileFailure = (action) => {
     }
 };
 
-export const startUpdateProfile = (update, config, image) => {
+export const startUpdateProfile = (update, file) => {
     return async (dispatch, getState) => {
         try {
             const imageUrl = '/images';
-            const { data: imageUpload } = await axios.post(imageUrl, config, axiosOption);
-            const { url: preSignedUrl, key } = imageUpload;
-
-            await axios.put(preSignedUrl, image, {
+            const { data: image } = await axios.post(imageUrl, file, {
                 headers: {
-                    'Content-Type': image.type
+                    'Accept': 'multipart/form-data',
+                    'Content-Type': 'multipart/form-data',
                 }
             });
 
             const edition = {
                 ...update,
-                image: key
+                image
             }
 
             const url = '/users/update/profile';

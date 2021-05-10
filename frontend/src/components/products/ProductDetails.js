@@ -94,7 +94,7 @@ const ProductDetails = (props) => {
                     <div className="ui stackable grid container">
                         <div className="eight wide column row">
                             <div className="column">
-                                <img src={`https://jalloh-proshop.s3.eu-central-1.amazonaws.com/${product.image}`}
+                                <img src={`${product.image}`}
                                      alt={product.description}
                                      width="500"
                                      height="400"

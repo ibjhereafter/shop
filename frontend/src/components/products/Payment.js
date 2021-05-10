@@ -50,19 +50,8 @@ const Payment = (props) => {
                             />
                             <label htmlFor="PayPal">PayPal or Credit Card</label>
                             <br style={Styles.marginBottom}/>
-                            <br/>
 
-                            <input type="radio"
-                                   id="Stripe"
-                                   name="paymentMethod"
-                                   value="Stripe"
-                                   style={Styles.marginRight}
-                                   onChange={(event => setPaymentMethod(event.target.value))}
-                            />
-                            <label htmlFor="Stripe">Stripe</label>
-                            <div style={Styles.marginBottom}>{}</div>
-
-                            <button type="submit" className="ui black button">CONTINUE</button>
+                            <button style={Styles.marginTop} type="submit" className="ui black button">CONTINUE</button>
 
                         </form>
                         </div>

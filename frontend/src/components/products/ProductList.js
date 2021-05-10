@@ -34,7 +34,7 @@ const ProductList = (props) => {
             <Fragment key={product._id}>
                 <div className="card">
                     <div style={styles.marginBottom} className="image">
-                        <img src={`https://jalloh-proshop.s3.eu-central-1.amazonaws.com/${product.image}`} alt={product.description}/>
+                        <img src={`${product.image}`} alt={product.description}/>
                     </div>
 
                     <div style={styles.marginLeft}>

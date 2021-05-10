@@ -129,7 +129,7 @@ const OrderDetails = (props) => {
                                                     <div className="column">
                                                         <div style={styles.marginBottom} className="image">
                                                             <img
-                                                                src={`https://jalloh-proshop.s3.eu-central-1.amazonaws.com/${item.image}`}
+                                                                src={`${item.image}`}
                                                                 alt={item.description}
                                                                 width='100px'
                                                             />
