@@ -43,7 +43,7 @@ const ProductDetails = (props) => {
         if (match.params.id) {
             startGetProductDetails(match.params.id);
         }
-        
+
     }, [startGetProductDetails, match]);
 
     const stock = (stock) => {
