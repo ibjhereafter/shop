@@ -9,13 +9,13 @@ const AddReview = (props) => {
     const [comment, setComment] = useState('');
     const [formError, setFormError] = useState('');
     const [showFormError, setShowFormError] = useState('hidden');
-    const { startCreateProductReview, startGetProductDetails, error, errorMessage, product } = props;
+    const { startCreateProductReview, startGetProductDetails, error, errorMessage, product, match } = props;
 
     useEffect(() => {
-        if (props.match.params.id) {
-            startGetProductDetails(props.match.params.id);
+        if (match.params.id) {
+            startGetProductDetails(match.params.id);
         }
-    }, [props.match.params.id, startGetProductDetails]);
+    }, [startGetProductDetails, match]);
 
 
 
@@ -30,7 +30,7 @@ const AddReview = (props) => {
                 comment
             };
 
-            startCreateProductReview(props.match.params.id, newRating);
+            startCreateProductReview(match.params.id, newRating);
         }
     };
 
