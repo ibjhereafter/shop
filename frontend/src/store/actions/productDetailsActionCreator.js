@@ -1,7 +1,6 @@
 import axios from "axios";
 import * as actionTypes from './actionTypes';
 import { getProductReviews } from './productReviewActionCreator';
-import history from "../../history";
 
 const axiosOption = {
     mode: 'cors',
@@ -29,8 +28,6 @@ export const startGetProductDetails = (productId) => {
             const { data } = await axios.get(url, axiosOption);
             dispatch(getProductDetails(data));
             dispatch(getProductReviews(data.reviews));
-            history.push(`/products/${productId}`);
-
         } catch (error) {
             if (error.response) {
                 dispatch(getProductsDetailsFailure(error.response.data.error));

@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const OrderDeliver = (props) => {
     document.title = 'Admin Mark As Deliver Order | Shop';
-    const { startAdminMarkOrderAsDelivered, paidOrder } = props;
+    const { startAdminMarkOrderAsDelivered, paidOrder, match } = props;
     const { data } = props.location;
 
 
@@ -16,11 +16,11 @@ const OrderDeliver = (props) => {
 
     useEffect(() => {
 
-        if (data === props.match.params.id) {
-            startAdminMarkOrderAsDelivered(data);
+        if (data === match.params.id) {
+            startAdminMarkOrderAsDelivered(match.params.id);
         }
 
-    }, [data, startAdminMarkOrderAsDelivered, props.match.params.id]);
+    }, [data, startAdminMarkOrderAsDelivered, match]);
 
 
 

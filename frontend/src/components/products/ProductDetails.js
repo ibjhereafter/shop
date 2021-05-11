@@ -11,7 +11,7 @@ import Rating from '../utilities/Rating';
 
 
 const ProductDetails = (props) => {
-    const { loading, error, product, startGetProductDetails, history, reviews }  = props;
+    const { loading, error, product, startGetProductDetails, history, reviews, match }  = props;
     const [ quantity, setQuantity ] = useState(1);
     document.title = `${product.name} | Shop`;
 
@@ -41,9 +41,9 @@ const ProductDetails = (props) => {
 
     useEffect(() => {
 
-        startGetProductDetails(props.match.params.id);
+        startGetProductDetails(match.params.id);
 
-    }, [startGetProductDetails, props.match.params.id]);
+    }, [startGetProductDetails, match]);
 
     const stock = (stock) => {
         if (stock >= 1) {

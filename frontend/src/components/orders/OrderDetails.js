@@ -22,7 +22,7 @@ const OrderDetails = (props) => {
     document.title = 'Order Details | Shop';
     const {
         loading, error, orderDetails, startGetOrderDetails, resetOrderPayment,
-        startGetOrderPayment, paymentLoading, loggedInUser } = props;
+        startGetOrderPayment, paymentLoading, loggedInUser, match } = props;
     const [sdkReady, setSdkReady] = useState(false);
     let sum = 0;
 
@@ -43,9 +43,9 @@ const OrderDetails = (props) => {
             }
         }
 
-        if (!orderDetails || orderDetails._id !== props.match.params.id) {
+        if (!orderDetails || orderDetails._id !== match.params.id) {
             resetOrderPayment();
-            startGetOrderDetails(props.match.params.id);
+            startGetOrderDetails(match.params.id);
         } else if (!orderDetails.isPaid) {
             if (!window.paypal) {
                 getPayPalClientId();
@@ -54,7 +54,7 @@ const OrderDetails = (props) => {
             }
         }
 
-    }, [props.match.params.id, startGetOrderDetails, orderDetails, resetOrderPayment]);
+    }, [match, startGetOrderDetails, orderDetails, resetOrderPayment]);
 
 
 
