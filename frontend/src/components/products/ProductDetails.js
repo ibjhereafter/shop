@@ -40,9 +40,10 @@ const ProductDetails = (props) => {
     };
 
     useEffect(() => {
-
-        startGetProductDetails(match.params.id);
-
+        if (match.params.id) {
+            startGetProductDetails(match.params.id);
+        }
+        
     }, [startGetProductDetails, match]);
 
     const stock = (stock) => {
