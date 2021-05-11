@@ -29,7 +29,6 @@ export const startGetProductDetails = (productId) => {
             const { data } = await axios.get(url, axiosOption);
             dispatch(getProductDetails(data));
             dispatch(getProductReviews(data.reviews));
-            history.push('/');
             history.push(`/products/${productId}`);
 
         } catch (error) {
