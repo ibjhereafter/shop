@@ -6,7 +6,6 @@ import Loader from "../utilities/Loader";
 import Error from "../utilities/Error";
 import { startAdminGetAllOrders } from "../../store/actions";
 import { Link } from "react-router-dom";
-import Styles from '../utilities/styles';
 
 const AdminOrders = (props) => {
     document.title = 'Admin | Orders | Shop';
