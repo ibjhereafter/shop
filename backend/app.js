@@ -30,8 +30,7 @@ app.use(usersRouter);
 app.use(ordersRouter);
 app.use(imagesRouter);
 
-if(process.env.NODE_ENV === 'development') {
-    console.log('Hi')
+if(process.env.NODE_ENV === 'production') {
     app.use(express.static(path.resolve(__dirname, '../frontend/build')));
     app.get("*", (req, res) => {
         return res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'));
@@ -40,7 +39,7 @@ if(process.env.NODE_ENV === 'development') {
     app.get('/*', (req, res) => {
         // const index = path.resolve(__dirname, 'frontend','build', 'index.html');
         // res.sendFile(index);
-        res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'));
+        return res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'));
     });
 
     app.get('*', function(req, res) {
@@ -61,7 +60,6 @@ if(process.env.NODE_ENV === 'development') {
 } else {
     app.use(express.static(path.resolve(__dirname, '../frontend/build/')));
     app.get('*', (req, res) => {
-        console.log('hi')
         res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'));
     });
     app.get('/*', (req, res) => {
@@ -69,13 +67,6 @@ if(process.env.NODE_ENV === 'development') {
         res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
     });
 }
-
-if (process.env.NODE_ENV === 'production') {
-
-}
-
-
-
 
 const PORT = process.env.PORT || 5000;
 

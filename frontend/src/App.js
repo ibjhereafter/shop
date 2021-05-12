@@ -53,7 +53,7 @@ const App = () => {
                   <Route path="/admin" component={AdminHome} exact />
                   <Route path="/create/product" component={CreateProduct} />
                   <Route path="/list/products" component={Products} />
-                  <Route path="/list/orders" component={Orders}  />
+                  <Route path="/list/orders" component={Orders} exact />
                   <Route path="/admin/orders/:id/deliver" component={OrderDeliver} exact />
                   <Route path="/products/:id/review" component={AddReview} exact />
               </Switch>

@@ -290,8 +290,6 @@ export const startAdminEditProduct = (productId, file, edit) => {
                 }
             });
 
-            console.log(image)
-
             const edition = {
                 ...edit,
                 image
@@ -323,6 +321,7 @@ export const startAdminGetAllOrders = () => {
             const url = '/admin/orders';
             const { data } = await axios.get(url, axiosOption);
             dispatch(adminGetAllOrders(data));
+            history.push('/list/orders');
 
         } catch (error) {
 
