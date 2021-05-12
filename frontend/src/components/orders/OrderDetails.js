@@ -140,7 +140,7 @@ const OrderDetails = (props) => {
                                                 <div className="two wide column">
                                                     <div className="column">
                                                         <div style={styles.marginBottom}>
-                                                            <Link to={`/products/${item._id}`}>
+                                                            <Link to={`/products/${item._id}/details`}>
                                                                 <div>{item.name}</div>
                                                             </Link>
                                                         </div>

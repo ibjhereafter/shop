@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const app = express();
 
 require('dotenv').config({path: './config/.env'});
 require('./database/connection');
@@ -11,19 +12,14 @@ const productsRouter = require('../backend/routes/productsRouter');
 const usersRouter = require('./routes/usersRouter');
 const ordersRouter = require('./routes/ordersRouter');
 const imagesRouter = require('./routes/imagesRouter');
-const app = express();
+
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
 app.use(logger('dev'));
-app.use(express.json({limit: '5000mb'}));
-app.use(express.urlencoded({limit: '50000mb', extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({extended: false }));
 app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, 'public')));
-// app.use(express.static(path.join(__dirname, '../frontend/build')));
-app.use(bodyParser.json({limit: '50mb'}));
-app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+app.use(bodyParser.json());
 
 app.get('/config/paypal', (req, res) => {
     return res.send(process.env.PAYPAL_CLIENT_ID);
@@ -34,18 +30,15 @@ app.use(usersRouter);
 app.use(ordersRouter);
 app.use(imagesRouter);
 
-
-if(process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../frontend/build')));
-
-    app.get('*', (req, res) => {
-        // const index = path.join(__dirname, 'build', 'index.html');
-        // res.sendFile(index);
-        res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'));
+if(process.env.NODE_ENV === 'development') {
+    console.log('Hi')
+    app.use(express.static(path.resolve(__dirname, '../frontend/build')));
+    app.get("*", (req, res) => {
+        return res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'));
     });
 
     app.get('/*', (req, res) => {
-        // const index = path.join(__dirname, 'build', 'index.html');
+        // const index = path.resolve(__dirname, 'frontend','build', 'index.html');
         // res.sendFile(index);
         res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'));
     });
@@ -65,7 +58,23 @@ if(process.env.NODE_ENV === 'production') {
             }
         }
     });
+} else {
+    app.use(express.static(path.resolve(__dirname, '../frontend/build/')));
+    app.get('*', (req, res) => {
+        console.log('hi')
+        res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'));
+    });
+    app.get('/*', (req, res) => {
+        console.log('hi')
+        res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+    });
 }
+
+if (process.env.NODE_ENV === 'production') {
+
+}
+
+
 
 
 const PORT = process.env.PORT || 5000;

@@ -23,7 +23,7 @@ const HighestRatedProducts = (props) => {
                             </div>
 
                             <div style={styles.marginLeft}>
-                                <Link to={`/products/${product._id}`}>
+                                <Link to={`/products/${product._id}/details`}>
                                     <div className="ui header" style={styles.marginBottom}>{product.name}</div>
                                 </Link>
 

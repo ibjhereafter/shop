@@ -36,7 +36,7 @@ export const startAdminCreateProduct = (product, file) => {
                 image
             }
             await axios.post(url, newProduct);
-            history.push('/admin/products');
+            history.push('/list/products');
 
         } catch (error) {
             if (error.response) {
@@ -60,7 +60,7 @@ export const startAdminDeleteProduct = (productId) => {
         try {
             const url = `/admin/products/${productId}/delete`;
             await axios.delete(url, axiosOption);
-            history.push('/admin/products');
+            history.push('/list/products');
         } catch (error) {
 
         }
@@ -299,7 +299,7 @@ export const startAdminEditProduct = (productId, file, edit) => {
 
             const url = `/admin/products/${productId}/edit`;
             await axios.patch(url, edition, axiosOption);
-            history.push('/admin/products');
+            history.push('/list/products');
 
         } catch (error) {
 
@@ -343,7 +343,7 @@ export const startAdminMarkOrderAsDelivered = (orderId) => {
             const url = `/admin/orders/${orderId}/deliver`;
             const { data } = await axios.patch(url, {}, axiosOption);
             dispatch(adminMarkOrderAsDelivered(data));
-            history.push('/admin/orders');
+            history.push('/list/orders');
         } catch (error) {
 
         }

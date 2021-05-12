@@ -36,12 +36,12 @@ const App = () => {
           <main className="pushDown">
               <Switch>
                   <Route path="/" component={HomePage} exact />
-                  <Route path="/products/:id" component={ProductDetails} exact />
+                  <Route path="/products/:id/details" component={ProductDetails} />
                   <Route path="/cart" component={Cart} exact />
                   <Route path="/checkout/shipping" component={Shipping} exact />
                   <Route path="/checkout/payment" component={Payment} exact />
                   <Route path="/checkout/placeorder" component={PlaceOrder} exact />
-                  <Route path="/orders/:id" component={OrderDetails} exact />
+                  <Route path="/orders/:id/details" component={OrderDetails} />
                   <Route path="/admin/users/:id/delete" component={DeleteUser} exact />
                   <Route path="/admin/products/:id/delete" component={DeleteProduct} exact />
                   <Route path="/admin/users/:id/edit" component={EditUser} exact />
@@ -51,9 +51,9 @@ const App = () => {
                   <Route path="/users/:id" component={Profile} exact />
                   <Route path="/users/update/profile" component={UpdateProfile} exact />
                   <Route path="/admin" component={AdminHome} exact />
-                  <Route path="/admin/products/create" component={CreateProduct} exact />
-                  <Route path="/admin/products" component={Products} exact />
-                  <Route path="/admin/orders" component={Orders} exact />
+                  <Route path="/create/product" component={CreateProduct} />
+                  <Route path="/list/products" component={Products} />
+                  <Route path="/list/orders" component={Orders}  />
                   <Route path="/admin/orders/:id/deliver" component={OrderDeliver} exact />
                   <Route path="/products/:id/review" component={AddReview} exact />
               </Switch>

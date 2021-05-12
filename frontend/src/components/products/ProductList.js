@@ -1,7 +1,7 @@
 import '../layout/Footer.css'
 import React, {Fragment, useEffect, useState} from 'react';
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import Loader from "../utilities/Loader";
 import Error from "../utilities/Error";
@@ -38,9 +38,9 @@ const ProductList = (props) => {
                     </div>
 
                     <div style={styles.marginLeft}>
-                        <Link to={`/products/${product._id}`}>
+                        <NavLink to={`/products/${product._id}/details`}>
                             <div className="ui header" style={styles.marginBottom}>{product.name}</div>
-                        </Link>
+                        </NavLink>
 
                         <div style={styles.marginBottom}>
                             <Rating averageRating={product.averageRating}/>

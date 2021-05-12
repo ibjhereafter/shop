@@ -37,7 +37,7 @@ export const startGetCreateOrOrder = (newOrder) => {
             dispatch(getCreatedOrder(data));
             localStorage.removeItem('cartItems');
             dispatch(resetCartItems([]));
-            history.push(`/orders/${data._id}`);
+            history.push(`/orders/${data._id}/details`);
 
         } catch (error) {
             if (error.response) {

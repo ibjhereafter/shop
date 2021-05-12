@@ -28,7 +28,7 @@ const Products = (props) => {
     };
 
     const onCreateButtonClick = () => {
-        history.push('/admin/products/create');
+        history.push('/create/product');
     }
 
     return (

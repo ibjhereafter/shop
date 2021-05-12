@@ -13,11 +13,11 @@ const AdminHomePageHeader = () => {
                                 </div>
 
                                 <div className="item">
-                                    <Link to="/admin/products">PRODUCTS</Link>
+                                    <Link to="/list/products">PRODUCTS</Link>
                                 </div>
 
                                 <div className="item">
-                                    <Link to="/admin/orders">ORDERS</Link>
+                                    <Link to="/list/orders">ORDERS</Link>
                                 </div>
                         </div>
                     </div>

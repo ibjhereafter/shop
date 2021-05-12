@@ -55,7 +55,7 @@ const Orders = (props) => {
                                                             </td>
 
                                                             <td>
-                                                                <Link to={{pathname:`/orders/${order._id}`, data: order._id}}>
+                                                                <Link to={{pathname:`/orders/${order._id}/details`, data: order._id}}>
                                                                     <button className="ui black button" type="button">Details</button>
                                                                 </Link>
 
