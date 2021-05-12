@@ -192,7 +192,17 @@ productsRouter.patch('/admin/products/:id/edit', authenticate, admin, async (req
       return res.status(404).json({ errror: error.message });
     }
 
+    const image = req.body.image;
+    if (!image) {
+      const image = product.image;
+      const editedProduct = {
+        ...req.body,
+        image
+      }
+      await Product.findByIdAndUpdate(req.params.id, editedProduct, { new: true,useFindAndModify: false });
+      return res.status(200).json();
 
+    }
     const editedProduct = {
       ...req.body
     }

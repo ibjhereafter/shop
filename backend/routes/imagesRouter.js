@@ -7,7 +7,27 @@ const AWS = require('aws-sdk');
 const authenticate = require('../middleware/authenticate');
 const admin = require('../middleware/admin');
 const uploadFile = require('../utilities/s3Upload');
+const cloudinary = require('../utilities/cloudinary');
 const imagesRouter = express.Router();
+
+imagesRouter.post('/upload', authenticate, async (req, res) => {
+    try {
+        if (!req.body.image) {
+            return res.status(200).json();
+        }
+        const result = await cloudinary.uploader.upload(req.body.image, {
+            folder: 'shop',
+            width: 200,
+            crop: 'scale'
+        });
+
+        return res.status(200).json(result.secure_url);
+
+    } catch (error) {
+
+        return res.status(500).json({ error: error.message });
+    }
+});
 
 imagesRouter.post('/images', authenticate, async (req, res) => {
     try {
@@ -21,10 +41,8 @@ imagesRouter.post('/images', authenticate, async (req, res) => {
                 const buffer = fs.readFileSync(path);
                 const type = await fileType.fromBuffer(buffer);
                 const imageType = type.mime.substr(6);
-                console.log(imageType)
                 const key = `${req.user._id}/${Date.now()}.${imageType}`;
                 const data = await uploadFile(buffer, key, type.mime);
-                console.log(data)
                 return res.status(200).send(data.Location);
             } catch (err) {
                 return res.status(500).send({error: err.message});

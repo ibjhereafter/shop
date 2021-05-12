@@ -46,7 +46,7 @@ const AddReview = (props) => {
                         {
                             product.name ? (<Fragment>
                                 <div className="ui header">{product.name}</div>
-                                <img style={Styles.marginBottom} src={`https://jalloh-proshop.s3.eu-central-1.amazonaws.com/${product.image}`}
+                                <img style={Styles.marginBottom} src={`${product.image}`}
                                      alt={product.description}
                                      width="300"
                                      height="300"

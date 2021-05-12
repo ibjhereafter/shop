@@ -25,13 +25,13 @@ export const startCreateProductReview = (productId, newReview) => {
         try {
             const url = `/products/${productId}/review`;
             await axios.post(url, newReview, axiosOption);
-            history.push(`/products/${productId}`);
+            history.push(`/products/${productId}/details`);
 
         } catch (error) {
             if (error.response) {
                 dispatch(createReviewFailure(error.response.data.error))
             } else {
-                dispatch(createReviewFailure(error))
+                dispatch(createReviewFailure(error));
             }
         }
     }

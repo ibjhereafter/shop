@@ -19,16 +19,11 @@ export const startGetProductToBeEdited = (productId) => {
     }
 };
 
-export const startAdminCreateProduct = (product, file) => {
+export const startAdminCreateProduct = (product, photo) => {
     return async () => {
         try {
-            const uploadUrl = '/images';
-            const { data: image } = await axios.post(uploadUrl, file, {
-                headers: {
-                    'Accept': 'multipart/form-data',
-                    'Content-Type': 'multipart/form-data',
-                }
-            });
+            const uploadUrl = '/upload';
+            const { data: image } = await axios.post(uploadUrl, {image: photo}, axiosOption)
 
             const url = '/admin/products/create';
             const newProduct = {
@@ -279,16 +274,11 @@ export const startAdminGetProductToBeEdited = (productId) => {
     }
 };
 
-export const startAdminEditProduct = (productId, file, edit) => {
+export const startAdminEditProduct = (productId, photo, edit) => {
     return async () => {
         try {
-            const imageUrl = '/images';
-            const { data: image } = await axios.post(imageUrl, file, {
-                headers: {
-                    'Accept': 'multipart/form-data',
-                    'Content-Type': 'multipart/form-data',
-                }
-            });
+            const uploadUrl = '/upload';
+            const { data: image } = await axios.post(uploadUrl, {image: photo}, axiosOption);
 
             const edition = {
                 ...edit,

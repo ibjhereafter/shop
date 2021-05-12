@@ -44,8 +44,6 @@ const CreateProduct = (props) => {
             setFormError(formError);
             setShowFormError('visible');
         } else {
-            const data = new FormData();
-            data.append('file', picture);
 
             const newProduct = {
                 name,
@@ -56,7 +54,7 @@ const CreateProduct = (props) => {
                 description
             };
 
-            startAdminCreateProduct(newProduct, data);
+            startAdminCreateProduct(newProduct, previewSource);
 
             setFormError('');
             setShowFormError('hidden');

@@ -25,14 +25,13 @@ const UpdateProfile = (props) => {
 
     const onFormSubmit = (event) => {
         event.preventDefault();
-        const data = new FormData();
-        data.append('file', picture);
+
         const update = {
             name,
             email
         };
 
-        startUpdateProfile(update, data);
+        startUpdateProfile(update, previewSource);
     }
 
     const previewFile = (file) => {
