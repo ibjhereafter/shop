@@ -321,7 +321,7 @@ export const startAdminGetAllOrders = () => {
             const url = '/admin/orders';
             const { data } = await axios.get(url, axiosOption);
             dispatch(adminGetAllOrders(data));
-            history.push('/list/orders');
+            history.push('/allorders');
 
         } catch (error) {
 

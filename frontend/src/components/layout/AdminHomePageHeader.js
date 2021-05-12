@@ -17,7 +17,7 @@ const AdminHomePageHeader = () => {
                                 </div>
 
                                 <div className="item">
-                                    <Link to="/list/orders">ORDERS</Link>
+                                    <Link to="/allorders">ORDERS</Link>
                                 </div>
                         </div>
                     </div>
