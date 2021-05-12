@@ -332,7 +332,7 @@ export const startAdminMarkOrderAsDelivered = (orderId) => {
             const url = `/admin/orders/${orderId}/deliver`;
             const { data } = await axios.patch(url, {}, axiosOption);
             dispatch(adminMarkOrderAsDelivered(data));
-            history.push('/list/orders');
+            history.push('/allorders');
         } catch (error) {
 
         }
