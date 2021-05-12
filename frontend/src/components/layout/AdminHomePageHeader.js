@@ -7,18 +7,15 @@ const AdminHomePageHeader = () => {
             <nav style={{marginTop: '0px'}}>
                 <div className="ui stackable grid">
                     <div className="ui sixteen column">
-                        <div className="ui fluid three item menu">
+                        <div className="ui fluid two item menu">
                             <div className="item">
-                                <Link to="/admin">ORDERS</Link>
+                                <Link to="/admin">USERS</Link>
                                 </div>
 
                                 <div className="item">
                                     <Link to="/list/products">PRODUCTS</Link>
                                 </div>
 
-                                <div className="item">
-                                    <Link to="/users/admin/list">USERS</Link>
-                                </div>
                         </div>
                     </div>
 

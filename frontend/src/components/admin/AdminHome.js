@@ -1,13 +1,13 @@
 import React, { Fragment } from "react";
 
-import AdminOrders from "./AdminOrders";
+import Users from "./Users";
 
 
 const AdminHome = () => {
     document.title = 'Admin | Shop';
     return (
         <Fragment>
-                <AdminOrders />
+            <Users />
         </Fragment>
     )
 };
