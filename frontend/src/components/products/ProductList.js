@@ -8,7 +8,6 @@ import Error from "../utilities/Error";
 import styles from "../utilities/styles";
 import Rating from "../utilities/Rating";
 import { startGetAllProducts } from '../../store/actions/index';
-import HighestRatedProducts from "./HighestRatedProducts";
 import PaginationButton from "../utilities/PaginationButton";
 
 const ProductList = (props) => {
@@ -66,7 +65,6 @@ const ProductList = (props) => {
                         list.length < 12 ? null : (
                             <Fragment>
                                 <h1 className="header">HIGHEST RATED PRODUCTS</h1>
-                                <HighestRatedProducts />
                             </Fragment>)
 
                     }

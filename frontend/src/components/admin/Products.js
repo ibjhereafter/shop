@@ -33,9 +33,10 @@ const Products = (props) => {
 
     return (
         <Fragment>
-            <AdminHomePageHeader />
+
             <div className="ui stackable grid container">
                 <div className="twelve wide column">
+                    <AdminHomePageHeader />
                     <div className="column">
                         <div style={{marginTop: '20px', marginBottom: '20px'}} className="ui container">
                             <h2 style={{marginTop: '0px'}}>PRODUCTS</h2>

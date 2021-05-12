@@ -5,6 +5,7 @@ import { startGetAdminUsers, logOut, startAdminDeleteUser, resetDeleteUserMessag
 import Loader from "../utilities/Loader";
 import Error from "../utilities/Error";
 import history from "../../history";
+import AdminHomePageHeader from "../layout/AdminHomePageHeader";
 
 const Users = (props) => {
     const [showDeleteUserMessage, setShowDeleteUserMessage] = useState('hidden');
@@ -43,6 +44,7 @@ const Users = (props) => {
         <Fragment>
             <div className="ui stackable grid container">
                 <div className="sixteen wide column">
+                    <AdminHomePageHeader />
                     <h2 className="header">USERS</h2>
                     <div className="column">
                         {

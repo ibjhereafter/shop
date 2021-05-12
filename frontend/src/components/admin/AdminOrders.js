@@ -6,22 +6,29 @@ import Loader from "../utilities/Loader";
 import Error from "../utilities/Error";
 import { startAdminGetAllOrders } from "../../store/actions";
 import { Link } from "react-router-dom";
+import Styles from '../utilities/styles';
 
 const AdminOrders = (props) => {
     document.title = 'Admin | Orders | Shop';
     const { startAdminGetAllOrders, orders, loading, error } = props;
+
     useEffect(() => {
         startAdminGetAllOrders();
     }, [startAdminGetAllOrders]);
     return (
         <Fragment>
-            <AdminHomePageHeader />
+            <div className="ui container">
+                <AdminHomePageHeader />
+            </div>
+
+
             <h1 className='ui container'>ORDERS</h1>
             <div className="ui stackable grid container">
                 <div className="sixteen wide column">
+
                     <div className="column">
                         {
-                            loading && <Loader />
+                            loading ? <Loader /> : null
                         }
                         {
                             error ? <Error /> : (

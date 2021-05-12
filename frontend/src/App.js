@@ -26,6 +26,7 @@ import EditProduct from "./components/admin/EditProduct";
 import OrderDeliver from "./components/admin/OrderDeliver";
 import AddReview from "./components/products/AddReviews";
 import AdminOrders from "./components/admin/AdminOrders";
+import Users from "./components/admin/Users";
 
 
 
@@ -53,7 +54,8 @@ const App = () => {
                   <Route path="/admin" component={AdminHome} exact />
                   <Route path="/create/product" component={CreateProduct} />
                   <Route path="/list/products" component={Products} />
-                  <Route path="/adminorders" component={AdminOrders} exact />
+                  <Route path="/users/admin/list" component={Users} />
+                  <Route path="/adminorders" component={AdminOrders} />
                   <Route path="/admin/orders/:id/deliver" component={OrderDeliver} exact />
                   <Route path="/products/:id/review" component={AddReview} exact />
               </Switch>

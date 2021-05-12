@@ -9,7 +9,7 @@ const AdminHomePageHeader = () => {
                     <div className="ui sixteen column">
                         <div className="ui fluid three item menu">
                             <div className="item">
-                                <Link to="/admin">USERS</Link>
+                                <Link to="/admin">ORDERS</Link>
                                 </div>
 
                                 <div className="item">
@@ -17,7 +17,7 @@ const AdminHomePageHeader = () => {
                                 </div>
 
                                 <div className="item">
-                                    <Link to="/adminorders">ORDERS</Link>
+                                    <Link to="/users/admin/list">USERS</Link>
                                 </div>
                         </div>
                     </div>
