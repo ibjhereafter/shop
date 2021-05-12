@@ -78,7 +78,7 @@ const Profile = (props) => {
                                                         <td data-label="Paid">{order.isPaid ? order.paymentResult.update_time.substr(0, 10) : (<div className="ui red visible message">Not paid</div>)}</td>
                                                         <td data-label="Delivered">{order.isDelivered ? <div className="ui visible green message">Delivered</div> : (<div className="ui red visible message">Not Delivered</div>)}</td>
                                                         <td>
-                                                            <Link to={`/orders/${order._id}`}>
+                                                            <Link to={`/orders/${order._id}/details`}>
                                                                 <button className="ui black button">Order Details</button>
                                                             </Link>
                                                         </td>
