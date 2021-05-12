@@ -311,7 +311,7 @@ export const startAdminGetAllOrders = () => {
             const url = '/admin/orders';
             const { data } = await axios.get(url, axiosOption);
             dispatch(adminGetAllOrders(data));
-            history.push('/allorders');
+            history.push('/adminorders');
 
         } catch (error) {
 
@@ -332,7 +332,7 @@ export const startAdminMarkOrderAsDelivered = (orderId) => {
             const url = `/admin/orders/${orderId}/deliver`;
             const { data } = await axios.patch(url, {}, axiosOption);
             dispatch(adminMarkOrderAsDelivered(data));
-            history.push('/allorders');
+            history.push('/adminorders');
         } catch (error) {
 
         }

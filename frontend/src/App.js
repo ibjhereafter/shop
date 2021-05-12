@@ -23,9 +23,9 @@ import Products from "./components/admin/Products";
 import CreateProduct from "./components/admin/CreateProduct";
 import DeleteProduct from "./components/admin/DeleteProduct";
 import EditProduct from "./components/admin/EditProduct";
-import Orders from "./components/admin/Orders";
 import OrderDeliver from "./components/admin/OrderDeliver";
 import AddReview from "./components/products/AddReviews";
+import AdminOrders from "./components/admin/AdminOrders";
 
 
 
@@ -53,7 +53,7 @@ const App = () => {
                   <Route path="/admin" component={AdminHome} exact />
                   <Route path="/create/product" component={CreateProduct} />
                   <Route path="/list/products" component={Products} />
-                  <Route path="/allorders" component={Orders} />
+                  <Route path="/adminorders" component={AdminOrders} exact />
                   <Route path="/admin/orders/:id/deliver" component={OrderDeliver} exact />
                   <Route path="/products/:id/review" component={AddReview} exact />
               </Switch>
