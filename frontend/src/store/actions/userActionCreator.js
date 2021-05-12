@@ -127,13 +127,19 @@ const resetCartItems = () => {
     }
 };
 
-export const startRegister = (newUser, image) => {
+export const startRegister = (user, photo) => {
     return async (dispatch,getState) => {
         try {
+            const uploadUrl = '/upload';
+            const { data: image } = await axios.post(uploadUrl, {image: photo}, axiosOption);
+
+            const newUser = {
+                ...user,
+                image
+            }
             const url = '/users/register';
-            const imageUrl = '/users/update/profileimage';
+
             const { data } = await axios.post(url, newUser, axiosOption);
-            await axios.post(imageUrl, image, axiosOption);
             dispatch(registerUser(data));
             dispatch(logIn(data));
             localStorage.setItem('user', JSON.stringify(getState().authentication.user));

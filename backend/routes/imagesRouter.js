@@ -10,7 +10,7 @@ const uploadFile = require('../utilities/s3Upload');
 const cloudinary = require('../utilities/cloudinary');
 const imagesRouter = express.Router();
 
-imagesRouter.post('/upload', authenticate, async (req, res) => {
+imagesRouter.post('/upload', async (req, res) => {
     try {
         if (!req.body.image) {
             return res.status(200).json();

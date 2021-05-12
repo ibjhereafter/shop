@@ -101,36 +101,6 @@ usersRouter.patch('/users/update/profile', authenticate, async (req, res) => {
    }
 });
 
-usersRouter.post('/users/update/profileimage', authenticate, upload.single('image'), async (req, res) => {
-       const image = await sharp(req.file.buffer).resize({width: 500, height: 500}).png().toBuffer();
-       const user = await User.findById(req.user._id);
-       user.image = image;
-       user.save();
-
-       return res.status(200).json();
-
-   }, (error, req, res, next) => {
-        return res.status(400).json({error: error.message});
-});
-
-usersRouter.get('/users/update/profileimage', authenticate, async (req, res) => {
-   try {
-       const image = await User.findById(req.user._id);
-       if (!image) {
-           const error = new Error('Please, user nor found');
-           return res.status(404).json({ error: error.message });
-       }
-
-       res.set('Content-Type', 'image/jpg');
-
-       return res.status(200).send(image.image);
-
-   } catch (error) {
-
-       return res.status(400).json({ error: error.message });
-   }
-});
-
 usersRouter.post('/users/register', async (req, res) => {
     try {
         const { email } = req.body;

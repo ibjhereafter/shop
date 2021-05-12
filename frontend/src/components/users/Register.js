@@ -78,9 +78,7 @@ const Register = (props) => {
                 password
             };
 
-            const data = new FormData();
-            data.append('image', picture);
-            startRegister(newUser, data);
+            startRegister(newUser, previewSource);
 
         } else {
             setFormError('Please check to confirm that each field is filled correctly!');
